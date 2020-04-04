@@ -1,11 +1,13 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class ArraySorts {
-    private long[] array;
+    private int[] array;
     private int nElements;
 
     public ArraySorts(int max) {
-        array = new long[max];
+        array = new int[max];
         nElements = 0;
     }
 
@@ -25,7 +27,7 @@ public class ArraySorts {
         for(int i =  nElements - 1; i > 1; i--) {
             for(int j = 0 ; j < i; j++) {
                 if(array[j] > array[j + 1]) {
-                    long temp = array[j];
+                    int temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
                 }
@@ -41,7 +43,7 @@ public class ArraySorts {
                     min = j;
                 }
             }
-            long temp = array[i];
+            int temp = array[i];
             array[i] = array[min];
             array[min] = temp;
         }
@@ -49,7 +51,7 @@ public class ArraySorts {
 
     public void insertSort() {
         for(int i = 1; i < nElements; i++) {
-            long temp = array[i];
+            int temp = array[i];
             int j = i;
             while(j != 0 && temp <= array[j - 1]) {
                 array[j] = array[j-1];
@@ -58,5 +60,4 @@ public class ArraySorts {
             array[j] = temp;
         }
     }
-
 }

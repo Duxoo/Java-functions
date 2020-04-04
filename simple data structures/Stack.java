@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Stack {
     protected int[] arr;
     protected int max;
@@ -16,7 +18,11 @@ public class Stack {
     }
 
     public boolean isFull() {
-        return arr.length == max;
+        return top == max - 1;
+    }
+
+    public void show() {
+        System.out.println(Arrays.toString(arr));
     }
 
     public void push(int value) {

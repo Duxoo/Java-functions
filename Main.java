@@ -2,18 +2,42 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        /*
+            1) for 10000 random elements average sort time
+                1.1) bubble - ~ 377.8 ms
+                1.2) selection ~ 108.2
+                1.3) insert ~ 64.4 ms
+            2) for 100000 random elements average sort time
+                1.1) bubble - ~ 24 seconds
+                1.2) selection ~ 6.9 seconds
+                1.3) insert ~ 3.9 seconds
+            All these sorts have O(N^2) difficulty and rely on execution time the best one is insert sort
+         */
 
+/*        ArraySorts array;
+        int size = 10;
+        array = new ArraySorts(size);
+
+        Queue queue = new Queue(size);
+
+        for(int i = 0; i < size; i++) {
+            int n = (int)(java.lang.Math.random() * (size - 1));
+            array.insert(n);
+            queue.inQueue(n);
+        }
+        long start = System.currentTimeMillis();
+        array.insertSort();
+        long finish = System.currentTimeMillis();
+        long timeConsumedMillis = finish - start;
+        System.out.println(timeConsumedMillis);*/
     }
 
     // https://www.codewars.com/kata/55c45be3b2079eccff00010f
