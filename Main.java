@@ -9,43 +9,30 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void easy() {
-        Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-        for(int i = 0; i < t; i++) {
-            int r = in.nextInt();
-            int g = in.nextInt();
-            int b = in.nextInt();
-            long min = 9223372036854775807L;
-            long[] r_array = new long[r];
-            long[] g_array = new long[g];
-            long[] b_array = new long[b];
-            for(int j = 0; j < r; j++) {
-                r_array[j] = in.nextLong();
-            }
-            for(int k = 0; k < g; k++) {
-                g_array[k] = in.nextLong();
-            }
-            for(int m = 0; m < b; m++) {
-                b_array[m] = in.nextLong();
-            }
-            for(int j = 0; j < r; j++) {
-                for(int k = 0; k < g; k++) {
-                    for(int m = 0; m < b; m++) {
-                        long a = ((r_array[j] - g_array[k]) * (r_array[j] - g_array[k])) + ((g_array[k] - b_array[m]) * (g_array[k] - b_array[m])) + ((b_array[m] - r_array[j]) * (b_array[m] - r_array[j]));
-                        if(a < min)
-                            min = a;
-                    }
-                }
-            }
-            System.out.println(min);
+    public static void hard() {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        double[] array = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextDouble();
         }
+
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += array[i];
+        }
+        double mean = sum / (double)n;
+        double distance = 0;
+
+        for (int i = 0; i < n; i++) {
+            distance += Math.pow((array[i] - mean), 2);
+        }
+
+        System.out.printf("%.1f", Math.sqrt(distance / n));
     }
-
-    public static void main(String[] args) throws Exception {
-        SortedList link = new SortedList();
-        //easy();
-
+    
+    public static void main(String[] args) {
         /*
             1) for 10000 random elements average sort time
                 1.1) bubble - ~ 377.8 ms
@@ -57,25 +44,26 @@ public class Main {
                 1.3) insert ~ 3.9 seconds
             All these sorts have O(N^2) difficulty and rely on execution time the best one is insert sort
          */
-
         ArraySorts array;
         int size = 10000;
         array = new ArraySorts(size);
-        long start = System.currentTimeMillis();
         for(int i = 0; i < size; i++) {
             int n = (int)(java.lang.Math.random() * (size - 1));
-            link.insertFirst(n);
-            //array.insert(n);
+            array.insert(n);
         }
-/*        long finish = System.currentTimeMillis();
-        long timeConsumedMillis = finish - start;
-        System.out.println(timeConsumedMillis);
+        array.show();
         long start = System.currentTimeMillis();
-        */
-        //  1`array.insertSort();
+        array.quickSort();
         long finish = System.currentTimeMillis();
         long timeConsumedMillis = finish - start;
-        System.out.println(timeConsumedMillis);
+        System.out.println(timeConsumedMillis + " ms");
+        array.show();
+    }
+
+    public static int pow(int n, int m) {
+        if (m == 1)
+            return n;
+        return pow(n * n, m / 2);
     }
 
     // https://www.codewars.com/kata/55c45be3b2079eccff00010f
@@ -209,6 +197,37 @@ public class Main {
             }
         }
         return st.empty();
+    }
+
+    public static String camelCase(String input) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < input.length(); i++) {
+            if (i != 0 && Character.isUpperCase(input.charAt(i))
+                    && !Character.isWhitespace(input.charAt(i - 1))) {
+                result.append(" ");
+                result.append(input.charAt(i));
+            } else {
+                result.append(input.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+    public static String[] solution(String s) {
+        int n = s.length() % 2 == 0 ? s.length() / 2 : (s.length() / 2) + 1;
+        String[] result = new String[n];
+        int counter = 0;
+        for (int i = 0; i < s.length() / 2; i++) {
+            result[i] = s.charAt(counter++) + "" + s.charAt(counter++);
+        }
+        if (s.length() % 2 != 0) {
+            result[n - 1] = s.charAt(s.length() - 1) + "_";
+        }
+        return result;
+    }
+
+    public static boolean validPhoneNumber(String phoneNumber) {
+        return phoneNumber.charAt(0) == '(' && phoneNumber.charAt(4) == ')' && phoneNumber.charAt(5) == ' ' && phoneNumber.charAt(9) == '-';
     }
     
 }
