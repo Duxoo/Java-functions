@@ -1,10 +1,5 @@
 package com.company;
 
-/**
- * TODO: check if it's possible to remove numItems property.
- * TODO: method insertItem throws Exception out of bounce.
- */
-
 public class Node {
     private static final int ORDER = 4;
     private int numItems;
@@ -16,6 +11,12 @@ public class Node {
         for (DataItem dataItem : itemArray) {
             System.out.print(dataItem.data + " ");
         }
+    }
+
+    public void display() {
+        for(int i = 0; i < numItems; i++)
+            itemArray[i].displayItem();
+        System.out.println("/");
     }
 
     public void connectChild(int childNum, Node child) {
@@ -83,5 +84,12 @@ public class Node {
         }
         itemArray[0] = newItem;
         return 0;
+    }
+
+    public DataItem removeItem() {
+        DataItem temp = itemArray[numItems - 1];
+        itemArray[numItems - 1] = null;
+        numItems--;
+        return temp;
     }
 }
