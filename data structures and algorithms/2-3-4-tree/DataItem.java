@@ -14,4 +14,8 @@ public class DataItem {
     public void display() {
         System.out.print(this.data);
     }
+
+    public void displayItem() {
+        System.out.print("/" + data);
+    }
 }
