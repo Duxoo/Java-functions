@@ -1,4 +1,3 @@
 # Java-functions
- There will be some tasks that i've done from codewars and data structure<br>
- In the main class there will be some code tasks from codewars.<br>
- In the data structures folder there are data structures without using Collection Interface and algorithms.
+ In the Main.java there are some tasks that i've done from codewars. a<br>
+ In the "data structures and algorithms" folder there are data structures without using Collection Interface and algorithms.
